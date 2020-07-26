@@ -1,0 +1,10 @@
+{
+  "notValid" : "Enter a positive number",
+  "welcome" : "Welcome to the Loan Calculator",
+  "loanAmount" : "What is the loan amount?",
+  "interestRate" : "Interest rate per year?",
+  "example" : "(Example: 5 for 5% or 2.5 for 2.5%",
+  "loanTerm" : "Loan term in years?",
+  "another" : "Would you like to calculate monthly payments for another loan? (y/n)"
+
+}

@@ -1,0 +1,12 @@
+{
+  "en" : {
+    "welcome" : "Welcome to the Calculator!",
+    "firstNumber" : "What's the first number?",
+    "secondNumber" : "What's the second number?",
+    "notValid" : "Hmm.. that doesn't look like a valid number!",
+    "whichOperation" : "Which operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+    "chooseNumber" : "You must choose 1, 2, 3 or 4",
+    "another" : "Would you like to choose another operation? (y/n)",
+    "thankyou" : "Thank you for using the Calculator!"
+  }
+}
