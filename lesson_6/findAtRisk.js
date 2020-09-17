@@ -42,7 +42,7 @@ function emptySquares(board) {
 function findAtRiskSquare(line, board) {
   let marksInLine = line.map(square => board[square]);
 
-  if (marksInLine.filter(value => value === 'X').length === 2) {
+  if (marksInLine.filter(value => value === INITIAL_MARKER).length === 2) {
     let unusedSquare = line.find(square => board[square] === ' ');
     if (unusedSquare !== undefined) {
       return unusedSquare;
@@ -60,12 +60,11 @@ function computerChoosesSquare(board) {
     if (square) break;
   }
 
-  board[square] = 'O';
-  
-  // let randomIndex = Math.floor(Math.random() * emptySquares(board).length);
-
-  // let square = emptySquares(board)[randomIndex];
-  // board[square] = COMPUTER_MARKER;
+  if (!square) {
+  let randomIndex = Math.floor(Math.random() * emptySquares(board).length);
+  square = emptySquares(board)[randomIndex];
+  }
+  board[square] = COMPUTER_MARKER;
 }
 
 let board = initializeBoard();

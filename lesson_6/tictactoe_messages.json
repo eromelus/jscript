@@ -1,0 +1,7 @@
+{
+  "notValid" : "That is not a valid choice",
+  "playAgain" : "Play again? (y or n)",
+  "chooseStartingPlayer" : "Who starts first: player(p) or computer(c)",
+  "welcome" : "Welcome to TicTacToe!",
+  "thankyou" : "Thanks for playing Tic Tac Toe!"
+}
