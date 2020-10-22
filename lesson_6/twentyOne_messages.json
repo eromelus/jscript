@@ -1,0 +1,15 @@
+{
+  "playerBusted" : "You busted! Dealer wins the round",
+  "dealerBusted" : "Dealer busted! You win the round",
+  "playerWin" : "You win the round",
+  "dealerWin" : "Dealer wins the round",
+  "tie" : "It's a tie",
+  "playAgain" : "Play again? Enter 'y' or 'n'",
+  "hitStay" : "Hit or stay? Enter 'h' or 's'",
+  "invalidEntry" : "Sorry, entry is invalid. Try again",
+  "thankYou" : "Thanks for playing!",
+  "playerHit" : "You chose to hit!",
+  "dealerHit" : "Dealer hits!",
+  "welcome" : "Welcome to 21!",
+  "roundsToWin" : "First one to win %s rounds is the winner!"
+}
