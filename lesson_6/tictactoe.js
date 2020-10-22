@@ -63,21 +63,15 @@ function emptySquares(board) {
 }
 
 function computerChoosesSquare(board) {
-  let square;
   // offense
-  for (let index = 0; index < WINNING_LINES.length; index++) {
-    let line = WINNING_LINES[index];
-    square = findAtRiskSquare(line, board, COMPUTER_MARKER);
-    if (square) break;
-  }
+  let square;
+  square = computerMove(board, COMPUTER_MARKER);
+
   // defense
   if (!square) {
-    for (let index = 0; index < WINNING_LINES.length; index++) {
-      let line = WINNING_LINES[index];
-      square = findAtRiskSquare(line, board, PLAYER_MARKER);
-      if (square) break;
-    }
+    square = computerMove(board, PLAYER_MARKER);
   }
+
   // pick 5
   if (!square) {
     if (board[5] === INITIAL_MARKER) {
@@ -92,6 +86,15 @@ function computerChoosesSquare(board) {
   board[square] = COMPUTER_MARKER;
 }
 
+function computerMove(board, marker) {
+  let atRiskSquare;
+  for (let index = 0; index < WINNING_LINES.length; index++) {
+    let line = WINNING_LINES[index];
+    atRiskSquare = findAtRiskSquare(line, board, marker);
+    if (atRiskSquare) break;
+  }
+  return atRiskSquare;
+}
 
 function findAtRiskSquare(line, board, marker) {
   let marksInLine = line.map(square => board[square]);
@@ -179,7 +182,7 @@ function getPlayAgainAnswer() {
   prompt('Play again? (y or n)');
   let answer = readline.question().toLowerCase();
 
-  while ((answer[0] !== 'n' && answer[0] !== 'y') || answer.length !== 1) {
+  while (answer[0] !== 'n' && answer[0] !== 'y') {
     prompt(MESSAGES['notValid']);
     prompt(MESSAGES['playAgain']);
     answer = readline.question().toLowerCase();
@@ -213,8 +216,8 @@ function chooseStartingPlayer() {
 
 while (true) {
   console.clear();
-  prompt(MESSAGES['welcome']);
-  let scores = { player: 0, computer: 0 };
+  console.log(MESSAGES['welcome'], ROUNDS_TO_WIN);
+  const scores = { player: 0, computer: 0 };
 
   while (!isMatchOver(scores)) {
     let board = initializeBoard();

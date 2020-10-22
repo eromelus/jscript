@@ -2,6 +2,6 @@
   "notValid" : "That is not a valid choice",
   "playAgain" : "Play again? (y or n)",
   "chooseStartingPlayer" : "Who starts first: player(p) or computer(c)",
-  "welcome" : "Welcome to TicTacToe!",
+  "welcome" : "Welcome to TicTacToe!\nFirst player to win %s round wins the game!",
   "thankyou" : "Thanks for playing Tic Tac Toe!"
 }
