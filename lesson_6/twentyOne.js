@@ -191,7 +191,7 @@ function hitOrStay(answer) {
   while (true) {
     console.log('');
     prompt(MESSAGES['hitStay']);
-    answer = readline.question();
+    answer = readline.question().toLowerCase();
     if (MOVE_OPTIONS.includes(answer)) break;
     console.log(MESSAGES['invalidEntry']);
   }
@@ -203,9 +203,21 @@ function dealerStays(dealerHand) {
   return dealerHand.length === 2;
 }
 
+function displayRules() {
+  console.log('\nRules:');
+  console.log('It\'s you (player) vs the dealer');
+  console.log(`The goal is to beat the dealers hand without going over ${GAME_NUM}`);
+  console.log(`Face cards (J, Q, K, A) are worth 10`);
+  console.log('Aces are with 1 or 11 depending on your hand');
+  console.log('To hit is to ask for another card');
+  console.log('To stand is to hold your total');
+  console.log('Dealer will hit until his hand totals 17 or higher');
+}
+
 while (true) {
   console.clear();
   console.log(MESSAGES['welcome']);
+  displayRules();
   console.log(MESSAGES['roundsToWin'], ROUNDS_TO_WIN);
   console.log('');
   const score = { player: 0, dealer: 0 };
