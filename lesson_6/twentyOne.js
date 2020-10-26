@@ -78,15 +78,15 @@ function hit(hand, deck) {
   hand.push(deck.pop());
 }
 
-function getResult(playerTotal, dealerTotal) {
+function getGameResult(playerTotal, dealerTotal) {
   if (playerTotal > 21) {
     return 'PLAYER_BUSTED';
   } else if (dealerTotal > 21) {
     return 'DEALER_BUSTED';
   } else if (playerTotal > dealerTotal) {
-    return 'PLAYER';
+    return 'PLAYER_WON';
   } else if (dealerTotal > playerTotal) {
-    return 'DEALER';
+    return 'DEALER_WON';
   } else {
     return 'TIE';
   }
@@ -113,7 +113,7 @@ function showHand(hand) {
 }
 
 function displayResult(playerTotal, dealerTotal) {
-  let result = getResult(playerTotal, dealerTotal);
+  let result = getGameResult(playerTotal, dealerTotal);
 
   switch (result) {
     case 'PLAYER_BUSTED':
@@ -122,10 +122,10 @@ function displayResult(playerTotal, dealerTotal) {
     case 'DEALER_BUSTED':
       prompt(MESSAGES['dealerBusted']);
       break;
-    case 'PLAYER':
+    case 'PLAYER_WON':
       prompt(MESSAGES['playerWin']);
       break;
-    case 'DEALER':
+    case 'DEALER_WON':
       prompt(MESSAGES['dealerWin']);
       break;
     case 'TIE':
@@ -139,7 +139,7 @@ function playAgain() {
   prompt(MESSAGES['playAgain']);
 
   let answer = readline.question().toLowerCase();
-  while (!PLAY_AGAIN_OPTIONS.includes(answer) || answer.length !== 1) {
+  while (!PLAY_AGAIN_OPTIONS.includes(answer)) {
     console.log(MESSAGES['invalidEntry']);
     prompt(MESSAGES['playAgain']);
     answer = readline.question().toLowerCase();
@@ -161,11 +161,11 @@ function isMatchDone(score) {
 }
 
 function updateScore(score, playerTotal, dealerTotal) {
-  let result = getResult(playerTotal, dealerTotal);
+  let result = getGameResult(playerTotal, dealerTotal);
 
-  if (result === 'PLAYER' || result === 'DEALER_BUSTED') {
+  if (result === 'PLAYER_WON' || result === 'DEALER_BUSTED') {
     score['player'] += 1;
-  } else if (result === 'DEALER' || result === 'PLAYER_BUSTED') {
+  } else if (result === 'DEALER_WON' || result === 'PLAYER_BUSTED') {
     score['dealer'] += 1;
   }
 }
@@ -257,8 +257,8 @@ while (true) {
     }
 
     // Dealer turn
-    while (dealerTotal < DEALER_NUM) {
-      if (isBust(playerTotal) || isBust(dealerTotal)) break;
+    while (dealerTotal < DEALER_NUM && !isBust(playerTotal)) {
+      if (isBust(dealerTotal)) break;
       hit(dealerHand, deck);
       dealerTotal = total(dealerHand);
 
