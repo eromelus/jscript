@@ -89,14 +89,15 @@ function createComputer() {
 const RPSGame = {
   human: createHuman(),
   computer: createComputer(),
+  roundsToWin: 5,
 
   displayWelcomeMessage() {
     console.clear();
     console.log("Let's play Rock, Paper, Scissors!");
-    console.log(`First to ${ROUNDS_TO_WIN} wins!`);
+    console.log(`First to ${this.roundsToWin} wins!`);
   },
 
-  displayWinner() {
+  displayRoundWinner() {
     let humanMove = this.human.move;
     let computerMove = this.computer.move;
     console.log(`You chose: ${humanMove}`);
@@ -151,7 +152,7 @@ const RPSGame = {
     this.displayWelcomeMessage();
     this.displayScore();
 
-    console.log(`${this.human.score === ROUNDS_TO_WIN ? 'You win' : 'Computer wins'} it all!`);
+    console.log(`${this.human.score === this.roundsToWin ? 'You win' : 'Computer wins'} it all!`);
     console.log('\nWith the following moves! GG');
   },
 
@@ -184,10 +185,7 @@ const RPSGame = {
   },
 
   gameOver() {
-    if (this.human.score === ROUNDS_TO_WIN || this.computer.score === ROUNDS_TO_WIN) {
-      return true;
-    }
-    return false;
+    return this.human.score === this.roundsToWin || this.computer.score === this.roundsToWin
   },
 
   updateGame() {
@@ -204,7 +202,7 @@ const RPSGame = {
         this.computer.choose();
         this.updateGame();
         this.computer.updateComputerWeightedChoices(this.human.move, this.computer.move, this.human.moveHistory);
-        this.displayWinner();
+        this.displayRoundWinner();
 
         if (this.gameOver()) break;
       }
