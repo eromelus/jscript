@@ -1,4 +1,4 @@
-# Lesson 1
+# Intro to OOP
 
 ## Object Oriented Programming
 
@@ -12,7 +12,7 @@ While the disadvantages are requires more code and less efficient code requiring
 
 **Encapsulation** is the idea of grouping related properties and methods in a single object (bundling data and operations into a single entity)
 
-Also refers to restring access to the state and certain behaviors; objects expose a **public interface** for interacting with other object and keep the implementation details hidden (showing only the data and behavior that other parts of the application need to work)
+Also refers to restring access to the state and certain behaviors; objects expose a **public interface** for interacting with other object and keep the implementation details hidden (showing only the data and behavior that other parts of the application that need to work)
 
 However, JavaScript doesn't not directly provide the means to limit exposure of methods and properties. There are way to achieve a degree of access restriction, but they're not perfect
 
@@ -111,6 +111,8 @@ function createCar(make, fuelLevel, engineOn) {
 }
 ```
 
+One object factory can reuse another object factor by mixing the object returned by another factory function into itself by using `Object.assign`
+
 ## Steps to planning an object-oriented application
 
 1. Write a textual description of the problem or exercise
@@ -132,4 +134,8 @@ Rule
 
 ??? - compare
 
-Once the the nouns and verbs are organized into objects, we need an engine to orchestrate the objects. The engine is where the procedural program flow should be
+### Orchestration engine
+
+Once the the nouns and verbs are organized into objects, we need an engine to orchestrate the objects. **The engine is where the procedural program flow should be**
+
+Child types inherit common properties and methods from a parent type, class inheritance.
